@@ -1,6 +1,6 @@
 //Create new product api
 import { connectToDB } from "@/utils/database";
-import Product, { IProduct } from "@/models/product";
+import Product from "@/models/product";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: Request, res: Response) => {
@@ -19,6 +19,7 @@ export const POST = async (req: Request, res: Response) => {
       category,
       inStock,
     });
+
     //res to console
     console.log("Product insert successfully");
     //res result data to client site
