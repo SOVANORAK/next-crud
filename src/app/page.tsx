@@ -1,13 +1,20 @@
-import Person from "@/components/person";
+import ProductCard from "@/components/card-product";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex justify-center flex-col items-center">
-      <h1 className="text-4xl font-semibold mb-28">Testing</h1>
-      <div className="flex flex-col gap-5">
-        <Person name={"Sovanorak"} age={23} isMarried={false} />
-        <Person name={"Sovanorak"} age={12} isMarried={true} />
+    <main>
+      <div className="p-10 w-full min-h-screen bg-neutral-900">
+        <div className="flex gap-6 flex-col items-center justify-center sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start ">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

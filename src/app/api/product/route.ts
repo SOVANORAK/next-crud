@@ -1,19 +1,28 @@
-// Get all product
-
 import Product from "@/models/product";
 import { connectToDB } from "@/utils/database";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (req: Request, res: Response) => {
-  //connect to database
-  await connectToDB();
-
+export const GET = async (res: NextResponse) => {
   try {
-    //fetch all product
+    await connectToDB();
     const products = await Product.find({}); //find all
-    //return to client
+
     return new NextResponse(JSON.stringify(products), { status: 200 });
   } catch (error) {
     console.log(error);
+  }
+};
+
+//DELETE PRODUCT
+export const DELETE = async (req: NextRequest, res: NextResponse) => {
+  const id = req.nextUrl.searchParams.get("id");
+
+  try {
+    await connectToDB();
+    await Product.findByIdAndDelete(id);
+
+    return new NextResponse("Product deleted successfully", { status: 200 });
+  } catch (error) {
+    return new NextResponse("Fail to delete Product", { status: 500 });
   }
 };

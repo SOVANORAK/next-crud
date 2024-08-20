@@ -7,6 +7,7 @@ export interface IProduct extends Document {
   category: string;
   price: number;
   inStock: boolean;
+  imageURL: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -38,6 +39,10 @@ const ProductSchema: Schema<IProduct> = new Schema(
     inStock: {
       type: Boolean,
       default: true,
+    },
+    imageURL: {
+      type: String,
+      required: [true, "Please provide product image"],
     },
   },
   {

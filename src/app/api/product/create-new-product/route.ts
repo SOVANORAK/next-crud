@@ -1,11 +1,12 @@
 //Create new product api
 import { connectToDB } from "@/utils/database";
 import Product from "@/models/product";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: NextRequest) => {
   //get all data from req.json beacause we get data from bbdy in json format
-  const { name, description, price, category, inStock } = await req.json();
+  const { name, description, price, category, inStock, imageURL } =
+    await req.json();
 
   try {
     //connect to database first
@@ -18,11 +19,9 @@ export const POST = async (req: Request, res: Response) => {
       price,
       category,
       inStock,
+      imageURL,
     });
 
-    //res to console
-    console.log("Product insert successfully");
-    //res result data to client site
     return new NextResponse(JSON.stringify(product), { status: 201 });
   } catch (error) {
     console.log(error);
