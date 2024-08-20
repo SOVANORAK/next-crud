@@ -1,18 +1,22 @@
 import Product from "@/models/product";
 import { connectToDB } from "@/utils/database";
+import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async ({ params }: { params: { id: string } }) => {
+//Fetch Single Product
+export const GET = async (
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  const { id } = params;
+
   try {
     await connectToDB();
 
     //fetch a product
-    const product = await Product.findById(params.id);
+    const product = await Product.findById(id);
 
-    console.log(product);
-
-    return new Response(JSON.stringify(product), { status: 200 });
+    return new NextResponse(JSON.stringify(product), { status: 200 });
   } catch (error) {
-    console.log(error);
-    return new Response("Failed to fetch product.", { status: 500 });
+    return new NextResponse("Failed to fetch product.", { status: 500 });
   }
 };
