@@ -10,7 +10,7 @@ import {
 const ProductCard = () => {
   return (
     <div>
-      <Card className="w-[310px] h-[240px] bg-neutral-700 rounded-md border-none">
+      <Card className="w-[310px] h-[240px] bg-neutral-700 rounded-md border-none text-white">
         <CardContent>
           <p>Card Content</p>
         </CardContent>
