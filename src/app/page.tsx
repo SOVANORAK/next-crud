@@ -14,22 +14,21 @@ interface Product {
 }
 
 export default function HomePage() {
-  const { data, error, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
       fetch(`http://localhost:3000/api/product`).then((res) => res.json()),
   });
 
   const products: Product[] = data;
-  //console.log(products);
 
   return (
     <main>
-      <div className="px-4 py-8 w-full min-h-screen bg-neutral-900 mx-auto">
+      <div className="p-10 w-full min-h-screen bg-neutral-950 mx-auto">
         {/* flex gap-4 flex-col items-center justify-center sm:flex-row sm:flex-wrap sm:justify-center xl:justify-start w-full  */}
 
-        <div className="flex gap-4 flex-col items-center justify-center xl:justify-start sm:flex-row sm:flex-wrap w-full">
-          {isLoading && <Loading listsToRender={8} />}
+        <div className="grid grid-cols-auto-fit-300 gap-4 justify-center">
+          {isLoading && <Loading listsToRender={12} />}
           {products?.map((product) => (
             <ProductCard
               key={product._id}

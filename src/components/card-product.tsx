@@ -18,7 +18,7 @@ const ProductCard = ({
   imageUrl,
 }: Props) => {
   return (
-    <Card className="bg-neutral-700 rounded-md border-none text-white p-4 flex flex-col gap-3 w-fit min-w-[20rem]">
+    <Card className="bg-neutral-800 rounded-md border-none text-white p-4 flex flex-col gap-3 w-full">
       <div>
         <Image
           src={imageUrl}

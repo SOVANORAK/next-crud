@@ -7,7 +7,7 @@ interface Props {
 
 const Loading = ({ listsToRender }: Props) => {
   return (
-    <div className="flex gap-4 flex-col justify-center items-center sm:flex-row sm:flex-wrap sm:justify-center xl:justify-start flex-wrap">
+    <div className="grid grid-cols-auto-fit-300 gap-4 border justify-center">
       {Array(listsToRender)
         .fill(1)
         .map((_, index) => (
