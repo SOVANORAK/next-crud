@@ -7,11 +7,11 @@ interface Props {
 
 const Loading = ({ listsToRender }: Props) => {
   return (
-    <div className="grid grid-cols-auto-fit-300 gap-4 border justify-center">
+    <div className="grid grid-cols-auto-fit-300 gap-4 justify-center">
       {Array(listsToRender)
         .fill(1)
-        .map((_, index) => (
-          <SkeletonCard key={index} />
+        .map((listNumber) => (
+          <SkeletonCard key={listNumber} />
         ))}
     </div>
   );
