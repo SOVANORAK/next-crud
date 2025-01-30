@@ -1,9 +1,9 @@
 import SkeletonCard from "@/components/skeleton-card";
 import React from "react";
 
-interface Props {
+type Props = {
   listsToRender: number;
-}
+};
 
 const Loading = ({ listsToRender }: Props) => {
   return (

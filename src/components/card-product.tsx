@@ -1,22 +1,16 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
-interface Props {
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  inStock: boolean;
-  imageUrl: string;
-}
+import { type ProductCard } from "@/types/products/product-card";
+
+type ProductCardProps = ProductCard;
 
 const ProductCard = ({
   name,
   description,
   price,
-  category,
   inStock,
   imageUrl,
-}: Props) => {
+}: ProductCardProps) => {
   return (
     <Card className="bg-neutral-800 rounded-md border-none text-white p-4 flex flex-col gap-3 w-full">
       <div>
@@ -38,18 +32,11 @@ const ProductCard = ({
         <span className="flex px-4 py-1 bg-orange-500  rounded-full  font-bold items-center">
           ${price}
         </span>
-        {inStock ? (
-          <span className="flex px-4 py-1 bg-green-600  rounded-full  font-bold items-center justify-center text-center">
-            In stock
-          </span>
-        ) : (
+        {!inStock && (
           <span className="flex px-4 py-1 bg-red-600  rounded-full  font-bold items-center justify-center text-center">
             Out stock
           </span>
         )}
-        <span className="flex px-4 py-1 bg-yellow-600  rounded-full  font-bold items-center">
-          {category}
-        </span>
       </div>
     </Card>
   );

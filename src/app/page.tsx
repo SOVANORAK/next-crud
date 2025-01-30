@@ -1,14 +1,9 @@
 "use client";
 import ProductCard from "@/components/card-product";
-import { useQuery } from "react-query";
-import { type Product } from "@/types/product";
+import { useGetProducts } from "@/hooks/product/get-product-handler";
 
 export default function HomePage() {
-  const { data: products } = useQuery<Product[] | undefined>({
-    queryKey: ["products"],
-    queryFn: () =>
-      fetch(`http://localhost:3000/api/product`).then((res) => res.json()),
-  });
+  const { data: products } = useGetProducts();
 
   return (
     <section className="w-full h-full flex justify-center items-center bg-neutral-900">
